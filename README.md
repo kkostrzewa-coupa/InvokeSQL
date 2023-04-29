@@ -13,5 +13,5 @@ git clone https://github.com/kkostrzewa-coupa/InvokeSQL
 ```powershell
 Invoke-MSSQL -Server localhost -database master -SQLCommand "select 1"
 
-Invoke-MSSQL -Server >IP<,>PORT< -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList >USERNAME<,(ConvertTo-SecureString -String >PASSWORD< -AsPlainText -Force)) -Database >DATABASE< -SQLCommand 'select @@servername,db_name()'
+($h,$u,$p,$d)=@('>IP<,>PORT<','>USERNAME<','>PASSWORD<','>DATABASE<'); Invoke-MSSQL -Server $h -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $u,(ConvertTo-SecureString -String $p -AsPlainText -Force)) -Database $d -SQLCommand 'select @@servername,db_name()'
 ```
